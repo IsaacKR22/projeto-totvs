@@ -34,14 +34,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ admin, onLogout 
         return String(degree || '').toLowerCase().includes(value.toLowerCase());
       }
 
-      const empValue = (emp as Record<string, unknown>)[key];
+      const empValue = (emp as unknown as Record<string, unknown>)[key];
       return String(empValue || '').toLowerCase().includes(value.toLowerCase());
     });
   });
 
   const handleUpdateEmployee = (updatedEmp: Employee) => {
     setEmployees(prev => prev.map(e => e.id === updatedEmp.id ? updatedEmp : e));
-    // In real app, API call here
   };
 
   const handleFilterChange = (key: string, value: string) => {
